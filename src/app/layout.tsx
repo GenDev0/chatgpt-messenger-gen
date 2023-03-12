@@ -5,6 +5,10 @@ import SessionProvider from "./components/SessionProvider";
 import SideBar from "./components/SideBar";
 import "./globals.css";
 
+export const metadata = {
+  title: "ChatGPT Gen",
+};
+
 export default async function RootLayout({
   children,
 }: {
@@ -21,7 +25,7 @@ export default async function RootLayout({
           ) : (
             <div className='flex'>
               {/* SideBar */}
-              <div className='bg-[#202123] max-w-xs h-screen overflow-y-auto md:min-w-[20rem] '>
+              <div className='bg-[#202123] max-w-xs min-h-screen overflow-y-auto md:min-w-[20rem] '>
                 <SideBar />
               </div>
               {/* ClientProvider - Notifications */}
