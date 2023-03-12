@@ -3,6 +3,7 @@ import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import { FormEvent, useState } from "react";
+import toast from "react-hot-toast";
 import { db } from "../../../firebase";
 
 type Props = {
@@ -47,6 +48,7 @@ function ChatInput({ chatId }: Props) {
       message
     );
     // Toast notification to Say Loading...!
+    const notification = toast.loading("Not Like You,ChatGPT is Thinking...");
 
     await fetch("/api/askQuestion", {
       method: "POST",
@@ -61,6 +63,9 @@ function ChatInput({ chatId }: Props) {
       }),
     }).then(() => {
       // Toast Notification to Say Successful!
+      toast.success("ChatGPT has responded to your Dumb Q", {
+        id: notification,
+      });
     });
   };
 
@@ -80,7 +85,7 @@ function ChatInput({ chatId }: Props) {
         <button
           disabled={!session || !prompt}
           type='submit'
-          className={`bg-[#11A37F] hover:opacity-50 text-white font-bold px-4 py-2 rounded disabled:bg-gray-300 cursor-not-allowed`}
+          className={`bg-[#11A37F] hover:opacity-50 text-white font-bold px-4 py-2 rounded disabled:bg-gray-300 disabled:cursor-not-allowed`}
         >
           <PaperAirplaneIcon className='h-4 w-4 -rotate-45' />
         </button>
