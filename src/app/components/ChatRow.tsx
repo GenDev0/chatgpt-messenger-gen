@@ -1,9 +1,8 @@
 import { ChatBubbleLeftIcon, TrashIcon } from "@heroicons/react/24/outline";
-import { collection, deleteDoc, doc, orderBy, query } from "firebase/firestore";
+import { collection, deleteDoc, doc } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import path from "path";
 import { useEffect, useState } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "../../../firebase";
