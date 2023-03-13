@@ -16,7 +16,7 @@ export default async function handler(
     return;
   }
   if (!chatId) {
-    res.status(400).json({ answer: "Please Provide a valid chat ID§" });
+    res.status(400).json({ answer: "Please Provide a valid chat ID !" });
     return;
   }
 
